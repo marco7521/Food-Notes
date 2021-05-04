@@ -62,10 +62,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         }
         
-        //顯示在氣球標記的文字
-        annotationView?.glyphText = "😋"
-        //氣球標記的背景顏色
-        annotationView?.markerTintColor = UIColor.orange
+        
+        annotationView?.glyphText = "😋"//顯示在氣球標記的文字
+        annotationView?.markerTintColor = UIColor.orange//氣球標記的背景顏色
         
         return annotationView
     }
