@@ -152,8 +152,6 @@ class NewRestaurantControllerTableViewController: UITableViewController, UITextF
             restaurant.remarks = remarks
             restaurant.photo = photo.pngData()
             restaurant.isfavorite = 0
-
-            
         }
         
         let dao = RestaurantDAO.shared
