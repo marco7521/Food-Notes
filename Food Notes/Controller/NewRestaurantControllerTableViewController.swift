@@ -48,6 +48,9 @@ class NewRestaurantControllerTableViewController: UITableViewController, UITextF
     
     @IBOutlet weak var photoImageView: UIImageView!
     
+    //Data
+    var restaurant: Restaurant = Restaurant()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -140,6 +143,21 @@ class NewRestaurantControllerTableViewController: UITableViewController, UITextF
         print("Location: \(addressTextField.text ?? "")")
         print("Phone: \(phoneTextField.text ?? "")")
         print("Description: \(descriptionTextView.text ?? "")")
+        
+        if let name = nameTextField.text, let type = typeTextField.text, let address = addressTextField.text, let tel = phoneTextField.text, let remarks = descriptionTextView.text, let photo = photoImageView.image{
+            restaurant.name = name
+            restaurant.types = type
+            restaurant.address = address
+            restaurant.tel = tel
+            restaurant.remarks = remarks
+            restaurant.photo = photo.pngData()
+            restaurant.isfavorite = 0
+
+            
+        }
+        
+        let dao = RestaurantDAO.shared
+        dao.insert(data: restaurant)
         
         dismiss(animated: true, completion: nil)
     }

@@ -8,13 +8,17 @@
 import UIKit
 
 class RestaurantTableViewController: UITableViewController {
+    
+    @IBOutlet var emptyRestaurantView: UIView!
+    
     //Data
-    var list = [Restaurant]()
+    var restaurants = [Restaurant]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadData()
+        
         tableView.cellLayoutMarginsFollowReadableWidth = true
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -25,41 +29,53 @@ class RestaurantTableViewController: UITableViewController {
             navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1.0), NSAttributedString.Key.font: customFont ]
         }
         navigationController?.hidesBarsOnSwipe = true
+        
+        // 準備空視圖
+        tableView.backgroundView = emptyRestaurantView
+        tableView.backgroundView?.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        list = RestaurantDAO.shared.getAllRestaurants()
+        restaurants = RestaurantDAO.shared.getAllRestaurants()
         tableView.reloadData()
         navigationController?.hidesBarsOnSwipe = true
     }
     
     func loadData(){
-        list = RestaurantDAO.shared.getAllRestaurants()
+        restaurants = RestaurantDAO.shared.getAllRestaurants()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+        //若無資料則顯示背景圖
+        if restaurants.count > 0 {
+            tableView.backgroundView?.isHidden = true
+            tableView.separatorStyle = .singleLine
+        } else {
+            tableView.backgroundView?.isHidden = false
+            tableView.separatorStyle = .none
+        }
+        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return list.count
+        return restaurants.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantTableViewCell
-        cell.nameLabel.text = list[indexPath.row].name
-        cell.locationLabel.text = list[indexPath.row].address
-        cell.typeLabel.text = list[indexPath.row].types
-        if let photoData = list[indexPath.row].photo{
+        cell.nameLabel.text = restaurants[indexPath.row].name
+        cell.locationLabel.text = restaurants[indexPath.row].address
+        cell.typeLabel.text = restaurants[indexPath.row].types
+        if let photoData = restaurants[indexPath.row].photo{
             cell.thumbnailImageView.image = UIImage(data: photoData)
         }
         //判斷是否為我的最愛
-        cell.heartImageView.isHidden = list[indexPath.row].isfavorite == 1 ? false : true
+        cell.heartImageView.isHidden = restaurants[indexPath.row].isfavorite == 1 ? false : true
         
         tableView.rowHeight = 80
         
@@ -80,7 +96,7 @@ class RestaurantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             //Update memory
-            let data = list.remove(at: indexPath.row)
+            let data = restaurants.remove(at: indexPath.row)
             //update database
             RestaurantDAO.shared.delete(pid: data.pid)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -96,7 +112,7 @@ class RestaurantTableViewController: UITableViewController {
         //刪除功能
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
             //Update memory
-            let data = self.list.remove(at: indexPath.row)
+            let data = self.restaurants.remove(at: indexPath.row)
             //update database
             RestaurantDAO.shared.delete(pid: data.pid)
             
@@ -108,11 +124,11 @@ class RestaurantTableViewController: UITableViewController {
         
         //分享功能
         let shareAction = UIContextualAction(style: .normal, title: "Share") { (action, sourceView, completionHandler) in
-            let defaultText = "Just checking in at " + self.list[indexPath.row].name
+            let defaultText = "Just checking in at " + self.restaurants[indexPath.row].name
             
             let activityController: UIActivityViewController
             
-            if let imageToShare = UIImage(data: self.list[indexPath.row].photo!) {
+            if let imageToShare = UIImage(data: self.restaurants[indexPath.row].photo!) {
                 activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
             } else  {
                 activityController = UIActivityViewController(activityItems: [defaultText], applicationActivities: nil)
@@ -145,19 +161,19 @@ class RestaurantTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let isFavoriteAction = UIContextualAction(style: .normal, title: "Favorite") { (action, sourceView, completionHandler) in
             let cell = tableView.cellForRow(at: indexPath) as! RestaurantTableViewCell
-            self.list[indexPath.row].isfavorite = (self.list[indexPath.row].isfavorite == 1) ? 0 : 1
-            cell.heartImageView.isHidden = self.list[indexPath.row].isfavorite == 1 ? false : true
+            self.restaurants[indexPath.row].isfavorite = (self.restaurants[indexPath.row].isfavorite == 1) ? 0 : 1
+            cell.heartImageView.isHidden = self.restaurants[indexPath.row].isfavorite == 1 ? false : true
             
             //滑動或點選後，資料更新
             let dao = RestaurantDAO.shared
-            dao.update(data: self.list[indexPath.row])
+            dao.update(data: self.restaurants[indexPath.row])
             
             completionHandler(true)
         }
         
         // 客製化向右滑按鈕
         isFavoriteAction.backgroundColor = UIColor(red: 39.0/255.0, green: 174.0/255.0, blue: 96.0/255.0, alpha: 1.0)
-        isFavoriteAction.image = self.list[indexPath.row].isfavorite == 1 ? UIImage(named: "undo") : UIImage(named: "tick")
+        isFavoriteAction.image = self.restaurants[indexPath.row].isfavorite == 1 ? UIImage(named: "undo") : UIImage(named: "tick")
         
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [isFavoriteAction])
         
@@ -192,7 +208,7 @@ class RestaurantTableViewController: UITableViewController {
         if segue.identifier == "showRestaurantDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let next = segue.destination as! RestaurantDetailViewController
-                let data = list[indexPath.row]
+                let data = restaurants[indexPath.row]
                 next.pid = data.pid
             }
         }
@@ -202,5 +218,4 @@ class RestaurantTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-
 }
