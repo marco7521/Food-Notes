@@ -20,6 +20,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        restaurant = RestaurantDAO.shared.getRestaurantByID(pid)!
 
         //取消navigation的大title
         navigationItem.largeTitleDisplayMode = .never
@@ -49,6 +51,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        restaurant = RestaurantDAO.shared.getRestaurantByID(pid)!
         
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true) //navigation不隱藏
@@ -105,8 +109,32 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         if segue.identifier == "showMap" {
             let destinationController = segue.destination as! MapViewController
             destinationController.restaurant = restaurant
+            
+        }else if segue.identifier == "showReview"{
+            let destinationController = segue.destination as! ReviewViewController
+            destinationController.restaurant = restaurant
         }
     }
     
-
+    @IBAction func close(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func rateRestaurant(segue: UIStoryboardSegue) {
+        dismiss(animated: true, completion: {
+            if let rating = segue.identifier {
+                self.restaurant.rating = rating
+                self.headerView.ratingImageView.image = UIImage(named: rating)
+                
+                let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
+                self.headerView.ratingImageView.transform = scaleTransform
+                self.headerView.ratingImageView.alpha = 0
+                
+                UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0.7, options: [], animations: {
+                    self.headerView.ratingImageView.transform = .identity //重設按鈕原來的位置
+                    self.headerView.ratingImageView.alpha = 1
+                }, completion: nil)
+            }
+        })
+    }
 }

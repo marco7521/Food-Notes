@@ -17,6 +17,7 @@ class RestaurantDAO{
     let TABLE_COLUMNNAME_REMARKS = "remarks"
     let TABLE_COLUMNNAME_ISFAVORITE = "isfavorite"
     let TABLE_COLUMNNAME_PHOTO = "photo"
+    let TABLE_COLUMNNAME_RATING = "rating"
     private static var _inst = RestaurantDAO()
     public static var shared: RestaurantDAO{
         return _inst
@@ -53,7 +54,8 @@ class RestaurantDAO{
                 let remarks = result.string(forColumn: TABLE_COLUMNNAME_REMARKS)
                 let isfavorite = Int(result.int(forColumn: TABLE_COLUMNNAME_ISFAVORITE))//注意轉型，32位元轉Int
                 let photo = result.data(forColumn: TABLE_COLUMNNAME_PHOTO)
-                list.append(Restaurant(pid: pid, name: name ?? "", types: types ?? "", tel: tel ?? "", address: address ?? "", remarks: remarks ?? "", isfavorite: isfavorite, photo: photo))
+                let rating = result.string(forColumn: TABLE_COLUMNNAME_RATING)
+                list.append(Restaurant(pid: pid, name: name ?? "", types: types ?? "", tel: tel ?? "", address: address ?? "", remarks: remarks ?? "", isfavorite: isfavorite, photo: photo, rating: rating ?? ""))
             }
             result.close()
         }
@@ -78,7 +80,8 @@ class RestaurantDAO{
                 let remarks = result.string(forColumn: TABLE_COLUMNNAME_REMARKS)
                 let isfavorite = Int(result.int(forColumn: TABLE_COLUMNNAME_ISFAVORITE))//注意轉型，32位元轉Int
                 let photo = result.data(forColumn: TABLE_COLUMNNAME_PHOTO)
-                ret = Restaurant(pid: pid, name: name ?? "", types: types ?? "", tel: tel ?? "", address: address ?? "", remarks: remarks ?? "", isfavorite: isfavorite, photo: photo)
+                let rating = result.string(forColumn: TABLE_COLUMNNAME_RATING)
+                ret = Restaurant(pid: pid, name: name ?? "", types: types ?? "", tel: tel ?? "", address: address ?? "", remarks: remarks ?? "", isfavorite: isfavorite, photo: photo, rating: rating ?? "")
             }
             result.close()
         }
@@ -103,7 +106,8 @@ class RestaurantDAO{
                 let remarks = result.string(forColumn: TABLE_COLUMNNAME_REMARKS)
                 let isfavorite = Int(result.int(forColumn: TABLE_COLUMNNAME_ISFAVORITE))//注意轉型，32位元轉Int
                 let photo = result.data(forColumn: TABLE_COLUMNNAME_PHOTO)
-                list.append(Restaurant(pid: pid, name: name ?? "", types: types ?? "", tel: tel ?? "", address: address ?? "", remarks: remarks ?? "", isfavorite: isfavorite, photo: photo))
+                let rating = result.string(forColumn: TABLE_COLUMNNAME_RATING)
+                list.append(Restaurant(pid: pid, name: name ?? "", types: types ?? "", tel: tel ?? "", address: address ?? "", remarks: remarks ?? "", isfavorite: isfavorite, photo: photo, rating: rating ?? ""))
             }
             result.close()
         }
@@ -115,9 +119,9 @@ class RestaurantDAO{
     func insert(data: Restaurant){
         let db = FMDatabase(path: dbPath)
         db?.open()
-        let sql = "INSERT INTO \(TABLE_NAME_RESTAURANT) (\(TABLE_COLUMNNAME_NAME),\(TABLE_COLUMNNAME_TYPES),\(TABLE_COLUMNNAME_TEL),\(TABLE_COLUMNNAME_ADDRESS),\(TABLE_COLUMNNAME_REMARKS),\(TABLE_COLUMNNAME_ISFAVORITE),\(TABLE_COLUMNNAME_PHOTO)) VALUES(?, ?, ?, ?, ?, ?, ?)"
+        let sql = "INSERT INTO \(TABLE_NAME_RESTAURANT) (\(TABLE_COLUMNNAME_NAME),\(TABLE_COLUMNNAME_TYPES),\(TABLE_COLUMNNAME_TEL),\(TABLE_COLUMNNAME_ADDRESS),\(TABLE_COLUMNNAME_REMARKS),\(TABLE_COLUMNNAME_ISFAVORITE),\(TABLE_COLUMNNAME_PHOTO),\(TABLE_COLUMNNAME_RATING)) VALUES(?, ?, ?, ?, ?, ?, ?, ?)"
         print("新增： \(sql)")
-        db?.executeUpdate(sql, withArgumentsIn: [data.name, data.types, data.tel, data.address, data.remarks, data.isfavorite, data.photo])
+        db?.executeUpdate(sql, withArgumentsIn: [data.name, data.types, data.tel, data.address, data.remarks, data.isfavorite, data.photo, data.rating])
         db?.close()
     }
     
@@ -135,9 +139,9 @@ class RestaurantDAO{
     func update(data: Restaurant){
         let db = FMDatabase(path: dbPath)
         db?.open()
-        let sql = "UPDATE \(TABLE_NAME_RESTAURANT) SET \(TABLE_COLUMNNAME_NAME)= ?,\(TABLE_COLUMNNAME_TYPES)=?,\(TABLE_COLUMNNAME_TEL)=?,\(TABLE_COLUMNNAME_ADDRESS)=?,\(TABLE_COLUMNNAME_REMARKS)=?,\(TABLE_COLUMNNAME_ISFAVORITE)=?,\(TABLE_COLUMNNAME_PHOTO)=? WHERE \(TABLE_COLUMNNAME_PID) = ?"
+        let sql = "UPDATE \(TABLE_NAME_RESTAURANT) SET \(TABLE_COLUMNNAME_NAME)= ?,\(TABLE_COLUMNNAME_TYPES)=?,\(TABLE_COLUMNNAME_TEL)=?,\(TABLE_COLUMNNAME_ADDRESS)=?,\(TABLE_COLUMNNAME_REMARKS)=?,\(TABLE_COLUMNNAME_ISFAVORITE)=?,\(TABLE_COLUMNNAME_PHOTO)=?,\(TABLE_COLUMNNAME_RATING)=? WHERE \(TABLE_COLUMNNAME_PID) = ?"
         print("更新： \(sql)")
-        db?.executeUpdate(sql, withArgumentsIn: [data.name, data.types, data.tel, data.address, data.remarks, data.isfavorite, data.photo, data.pid])
+        db?.executeUpdate(sql, withArgumentsIn: [data.name, data.types, data.tel, data.address, data.remarks, data.isfavorite, data.photo, data.rating, data.pid])
         db?.close()
     }
 }

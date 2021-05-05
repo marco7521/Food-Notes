@@ -41,6 +41,7 @@
 		846FC05026412462006342C7 /* RestaurantDetailSeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FC04F26412462006342C7 /* RestaurantDetailSeparatorCell.swift */; };
 		846FC05326412519006342C7 /* RestaurantDetailMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FC05226412519006342C7 /* RestaurantDetailMapCell.swift */; };
 		846FC056264131FE006342C7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FC055264131FD006342C7 /* MapViewController.swift */; };
+		8486CE1C2642574F0025D1DC /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486CE1B2642574F0025D1DC /* ReviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		846FC04F26412462006342C7 /* RestaurantDetailSeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailSeparatorCell.swift; sourceTree = "<group>"; };
 		846FC05226412519006342C7 /* RestaurantDetailMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailMapCell.swift; sourceTree = "<group>"; };
 		846FC055264131FD006342C7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		8486CE1B2642574F0025D1DC /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				846FC002263FDED2006342C7 /* RestaurantTableViewController.swift */,
 				846FC00E263FF688006342C7 /* RestaurantDetailViewController.swift */,
 				846FC055264131FD006342C7 /* MapViewController.swift */,
+				8486CE1B2642574F0025D1DC /* ReviewViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			files = (
 				846FBFF3263FDE03006342C7 /* FMResultSet.m in Sources */,
 				846FC0202640F375006342C7 /* RestaurantDetailIconTextCell.swift in Sources */,
+				8486CE1C2642574F0025D1DC /* ReviewViewController.swift in Sources */,
 				846FC05326412519006342C7 /* RestaurantDetailMapCell.swift in Sources */,
 				846FBFFC263FDE5A006342C7 /* RestaurantDAO.swift in Sources */,
 				846FBFD2263FDBDD006342C7 /* ViewController.swift in Sources */,

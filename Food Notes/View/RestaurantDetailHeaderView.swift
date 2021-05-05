@@ -15,6 +15,7 @@ class RestaurantDetailHeaderView: UIView {
             nameLabel.numberOfLines = 0
         }
     }
+    
     @IBOutlet var typeLabel: UILabel! {
         didSet {
             //設定標籤圓角效果
@@ -22,6 +23,7 @@ class RestaurantDetailHeaderView: UIView {
             typeLabel.layer.masksToBounds = true
         }
     }
+    
     @IBOutlet var heartImageView: UIImageView! {
         didSet {
             //設定圖片為板模範本(也可至assets目錄，至屬性檢閱器設定該圖片Render as 為 Template image)
@@ -29,4 +31,6 @@ class RestaurantDetailHeaderView: UIView {
             heartImageView.tintColor = .white
         }
     }
+    
+    @IBOutlet var ratingImageView: UIImageView!
 }

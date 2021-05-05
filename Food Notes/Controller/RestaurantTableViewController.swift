@@ -184,18 +184,18 @@ class RestaurantTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let next = segue.destination as? RestaurantDetailViewController, let indexPath = tableView.indexPathForSelectedRow{
-            let data = list[indexPath.row]
-            next.restaurant = list[indexPath.row]
-        }
-        
-//        if segue.identifier == "showRestaurantDetail" {
-//            if let indexPath = tableView.indexPathForSelectedRow {
-//                let next = segue.destination as! RestaurantDetailViewController
-//                let data = list[indexPath.row]
-//                next.pid = data.pid
-//            }
+//        if let next = segue.destination as? RestaurantDetailViewController, let indexPath = tableView.indexPathForSelectedRow{
+//            let data = list[indexPath.row]
+//            next.restaurant = list[indexPath.row]
 //        }
+        
+        if segue.identifier == "showRestaurantDetail" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let next = segue.destination as! RestaurantDetailViewController
+                let data = list[indexPath.row]
+                next.pid = data.pid
+            }
+        }
     }
     
 

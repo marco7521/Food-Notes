@@ -16,4 +16,5 @@ struct Restaurant {
     var remarks = ""
     var isfavorite = 0
     var photo: Data?
+    var rating = ""
 }
