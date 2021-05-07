@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let backButtonImage = UIImage(named: "back")
 //        UINavigationBar.appearance().backIndicatorImage = backButtonImage
 //        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
+        
+        // 客製化tab bar
+        UITabBar.appearance().tintColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1.0) //更改tab bar文字、圖案顏色
+        UITabBar.appearance().barTintColor = .black //更改tab bar背景顏色
+//        UITabBar.appearance().barTintColor = UIColor(red: 250/255, green: 250/255, blue: 250/255, alpha: 1) //更改tab bar背景顏色
         return true
     }
 
