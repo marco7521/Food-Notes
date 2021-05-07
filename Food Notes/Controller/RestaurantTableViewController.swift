@@ -12,8 +12,7 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
     @IBOutlet var emptyRestaurantView: UIView!
     
     //Data
-//    var restaurants = [Restaurant]()
-    var restaurants: [Restaurant] = []
+    var restaurants = [Restaurant]()
     var searchResults: [Restaurant] = []
     
     var searchController: UISearchController!
@@ -42,7 +41,12 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
-        self.navigationItem.searchController = searchController
+        searchController.searchBar.placeholder = "搜尋餐廳..."
+        searchController.searchBar.barTintColor = .white
+        searchController.searchBar.backgroundImage = UIImage()
+        searchController.searchBar.tintColor = UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1.0) //search bar按鈕文字顏色
+//        self.navigationItem.searchController = searchController
+        tableView.tableHeaderView = searchController.searchBar //search bar放在tableView的tableHeaderView
         
     }
     
@@ -250,7 +254,10 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
     func filterContent(for searchText: String) {
         searchResults = restaurants.filter({ (restaurant) -> Bool in
             let name = restaurant.name
-            let isMatch = name.localizedCaseInsensitiveContains(searchText)
+            let address = restaurant.address
+            let type = restaurant.types
+            //可以搜尋餐廳名字或地址或類型
+            let isMatch = name.localizedCaseInsensitiveContains(searchText) || address.localizedCaseInsensitiveContains(searchText) || type.localizedCaseInsensitiveContains(searchText)
             return isMatch
         })
     }
