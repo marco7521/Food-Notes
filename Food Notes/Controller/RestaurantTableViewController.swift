@@ -56,6 +56,23 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
         navigationController?.hidesBarsOnSwipe = true
     }
     
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        //判斷是否呈現導覽圖（導覽圖會在程式第一次執行時呈現）
+        if UserDefaults.standard.bool(forKey: "hasViewedWalkthrough") {
+            return
+        }
+        
+        //顯示導覽圖
+        let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+        if let walkthroughViewController = storyboard.instantiateViewController(withIdentifier: "WalkthroughViewController") as? WalkthroughViewController {
+            
+            present(walkthroughViewController, animated: true, completion: nil)
+        }
+    }
+    
+    
     func loadData(){
         restaurants = RestaurantDAO.shared.getAllRestaurants()
     }

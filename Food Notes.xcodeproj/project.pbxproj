@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		846B7BFE264511A000CA97A4 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846B7BFD264511A000CA97A4 /* Onboarding.storyboard */; };
+		846B7C002645195D00CA97A4 /* WalkthroughContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B7BFF2645195D00CA97A4 /* WalkthroughContentViewController.swift */; };
+		846B7C0226451CC700CA97A4 /* WalkthroughPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B7C0126451CC700CA97A4 /* WalkthroughPageViewController.swift */; };
+		846B7C0426451ED800CA97A4 /* WalkthroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846B7C0326451ED800CA97A4 /* WalkthroughViewController.swift */; };
 		846FBFCE263FDBDD006342C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FBFCD263FDBDD006342C7 /* AppDelegate.swift */; };
 		846FBFD0263FDBDD006342C7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FBFCF263FDBDD006342C7 /* SceneDelegate.swift */; };
 		846FBFD2263FDBDD006342C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FBFD1263FDBDD006342C7 /* ViewController.swift */; };
@@ -47,6 +51,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		846B7BFD264511A000CA97A4 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		846B7BFF2645195D00CA97A4 /* WalkthroughContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughContentViewController.swift; sourceTree = "<group>"; };
+		846B7C0126451CC700CA97A4 /* WalkthroughPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughPageViewController.swift; sourceTree = "<group>"; };
+		846B7C0326451ED800CA97A4 /* WalkthroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkthroughViewController.swift; sourceTree = "<group>"; };
 		846FBFCA263FDBDD006342C7 /* Food Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Food Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		846FBFCD263FDBDD006342C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		846FBFCF263FDBDD006342C7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -178,6 +186,9 @@
 				846FC055264131FD006342C7 /* MapViewController.swift */,
 				8486CE1B2642574F0025D1DC /* ReviewViewController.swift */,
 				8486CE1F264281EA0025D1DC /* NewRestaurantControllerTableViewController.swift */,
+				846B7BFF2645195D00CA97A4 /* WalkthroughContentViewController.swift */,
+				846B7C0126451CC700CA97A4 /* WalkthroughPageViewController.swift */,
+				846B7C0326451ED800CA97A4 /* WalkthroughViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -226,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				846FBFD3263FDBDD006342C7 /* Main.storyboard */,
+				846B7BFD264511A000CA97A4 /* Onboarding.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -303,6 +315,7 @@
 				846FC04426410312006342C7 /* Rubik-Black.ttf in Resources */,
 				846FBFD5263FDBDD006342C7 /* Main.storyboard in Resources */,
 				846FC04826410312006342C7 /* Rubik-Medium.ttf in Resources */,
+				846B7BFE264511A000CA97A4 /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,10 +344,13 @@
 				846FBFD0263FDBDD006342C7 /* SceneDelegate.swift in Sources */,
 				846FC0232640F45F006342C7 /* RestaurantDetailTextCell.swift in Sources */,
 				846FBFF5263FDE03006342C7 /* FMDatabasePool.m in Sources */,
+				846B7C0226451CC700CA97A4 /* WalkthroughPageViewController.swift in Sources */,
 				846FC01C264043E7006342C7 /* RestaurantDetailHeaderView.swift in Sources */,
 				846FBFF1263FDE03006342C7 /* FMDatabase.m in Sources */,
+				846B7C002645195D00CA97A4 /* WalkthroughContentViewController.swift in Sources */,
 				846FBFF2263FDE03006342C7 /* FMDatabaseAdditions.m in Sources */,
 				846FBFF9263FDE50006342C7 /* Restaurant.swift in Sources */,
+				846B7C0426451ED800CA97A4 /* WalkthroughViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
