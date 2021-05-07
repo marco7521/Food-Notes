@@ -7,12 +7,16 @@
 
 import UIKit
 
-class RestaurantTableViewController: UITableViewController {
+class RestaurantTableViewController: UITableViewController, UISearchResultsUpdating {
     
     @IBOutlet var emptyRestaurantView: UIView!
     
     //Data
-    var restaurants = [Restaurant]()
+//    var restaurants = [Restaurant]()
+    var restaurants: [Restaurant] = []
+    var searchResults: [Restaurant] = []
+    
+    var searchController: UISearchController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +37,13 @@ class RestaurantTableViewController: UITableViewController {
         // 準備空視圖
         tableView.backgroundView = emptyRestaurantView
         tableView.backgroundView?.isHidden = true
+        
+        // 增加 search bar
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        self.navigationItem.searchController = searchController
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,21 +72,28 @@ class RestaurantTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return restaurants.count
+        if searchController.isActive {
+            return searchResults.count
+        } else {
+            return restaurants.count
+        }
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantTableViewCell
-        cell.nameLabel.text = restaurants[indexPath.row].name
-        cell.locationLabel.text = restaurants[indexPath.row].address
-        cell.typeLabel.text = restaurants[indexPath.row].types
-        if let photoData = restaurants[indexPath.row].photo{
+        
+        //判斷是從搜尋結果或是原來陣列取得的餐廳
+        let restaurant = (searchController.isActive) ? searchResults[indexPath.row] : restaurants[indexPath.row]
+        
+        cell.nameLabel.text = restaurant.name
+        cell.locationLabel.text = restaurant.address
+        cell.typeLabel.text = restaurant.types
+        if let photoData = restaurant.photo{
             cell.thumbnailImageView.image = UIImage(data: photoData)
         }
         //判斷是否為我的最愛
-        cell.heartImageView.isHidden = restaurants[indexPath.row].isfavorite == 1 ? false : true
+        cell.heartImageView.isHidden = restaurant.isfavorite == 1 ? false : true
         
         tableView.rowHeight = 80
         
@@ -179,6 +197,15 @@ class RestaurantTableViewController: UITableViewController {
         
         return swipeConfiguration
     }
+    
+    //設定搜尋功能啟動時，向右、左按鈕功能停用
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if searchController.isActive {
+            return false
+        } else {
+            return true
+        }
+    }
 
     /*
     // Override to support rearranging the table view.
@@ -207,9 +234,8 @@ class RestaurantTableViewController: UITableViewController {
         
         if segue.identifier == "showRestaurantDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let next = segue.destination as! RestaurantDetailViewController
-                let data = restaurants[indexPath.row]
-                next.pid = data.pid
+                let nextController = segue.destination as! RestaurantDetailViewController
+                nextController.pid = (searchController.isActive) ? searchResults[indexPath.row].pid : restaurants[indexPath.row].pid
             }
         }
     }
@@ -217,4 +243,25 @@ class RestaurantTableViewController: UITableViewController {
     @IBAction func unwindToHome(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }
+    
+    
+    // MARK: - Helper methods
+    
+    func filterContent(for searchText: String) {
+        searchResults = restaurants.filter({ (restaurant) -> Bool in
+            let name = restaurant.name
+            let isMatch = name.localizedCaseInsensitiveContains(searchText)
+            return isMatch
+        })
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filterContent(for: searchText)
+            tableView.reloadData()
+        }
+    }
 }
+
+
+
