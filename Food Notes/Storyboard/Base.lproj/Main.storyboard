@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ILf-qL-1VK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fvy-Tn-ao9">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -130,12 +130,12 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="375.70093457943921" y="46.652267818574515"/>
+            <point key="canvasLocation" x="1275.7009345794393" y="46.652267818574515"/>
         </scene>
         <!--Restaurant Detail View Controller-->
         <scene sceneID="Y5X-y0-I3e">
             <objects>
-                <viewController id="tYa-UF-pex" customClass="RestaurantDetailViewController" customModule="Food_Notes" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="tYa-UF-pex" customClass="RestaurantDetailViewController" customModule="Food_Notes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oEh-jz-PVa">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -393,7 +393,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2J6-4N-ZrG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1192.9906542056074" y="46.652267818574515"/>
+            <point key="canvasLocation" x="2092.9906542056074" y="46.652267818574515"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="5I4-Yg-vA1">
@@ -485,7 +485,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0xZ-MY-WWB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="fSd-pW-QE6" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2035.5140186915887" y="405.61555075593958"/>
+            <point key="canvasLocation" x="2935.5140186915887" y="405.61555075593958"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="N1Q-xk-K86">
@@ -515,7 +515,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCi-0Z-ki7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2035.5140186915887" y="-301.29589632829374"/>
+            <point key="canvasLocation" x="2935.5140186915887" y="-301.29589632829374"/>
         </scene>
         <!--新餐廳-->
         <scene sceneID="Gxy-Q6-ILt">
@@ -748,6 +748,7 @@
         <scene sceneID="oTC-oa-rPx">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ILf-qL-1VK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="S0D-dd-y7f"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pVA-Tg-Orq">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -760,7 +761,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rpf-dQ-5WO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-524.29906542056074" y="46.652267818574515"/>
+            <point key="canvasLocation" x="375.70093457943921" y="46.652267818574515"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6np-v5-AiA">
@@ -779,6 +780,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sE3-yd-G6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="376" y="-1031"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="TS0-lt-qWx">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="fvy-Tn-ao9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SpG-K0-lpQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ILf-qL-1VK" kind="relationship" relationship="viewControllers" id="usq-VV-liA"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s6s-AF-4aZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-524.29906542056074" y="46.652267818574515"/>
         </scene>
     </scenes>
     <resources>

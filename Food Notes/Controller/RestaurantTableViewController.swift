@@ -228,21 +228,6 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
         }
     }
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
 
@@ -257,6 +242,9 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
             if let indexPath = tableView.indexPathForSelectedRow {
                 let nextController = segue.destination as! RestaurantDetailViewController
                 nextController.pid = (searchController.isActive) ? searchResults[indexPath.row].pid : restaurants[indexPath.row].pid
+                
+                //跳至下一頁時 tab bar隱藏（也可在storyboard設定）
+                nextController.hidesBottomBarWhenPushed = true
             }
         }
     }
