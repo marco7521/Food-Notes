@@ -21,25 +21,27 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //資料初始化
         restaurant = RestaurantDAO.shared.getRestaurantByID(pid)!
 
         //取消navigation的大title
         navigationItem.largeTitleDisplayMode = .never
         
-        // Configure the table view
+        // 設定 table view
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none //移除表格分隔線
         tableView.contentInsetAdjustmentBehavior = .never//設定表格不被navigation擋住
         
-        // Configure header view
-//        self.title = restaurant.name
-        headerView.nameLabel.text = restaurant.name
-        headerView.typeLabel.text = restaurant.types
-        headerView.heartImageView.isHidden = (restaurant.isfavorite == 1) ? false : true
+        // 設定 header view
+        headerView.nameLabel.text = restaurant.name //名稱
+        headerView.typeLabel.text = restaurant.types //類型
         if let data = restaurant.photo{
-            headerView.headerImageView.image = UIImage(data: data)
+            headerView.headerImageView.image = UIImage(data: data) //餐廳圖片
         }
+        headerView.heartImageView.isHidden = (restaurant.isfavorite == 1) ? false : true //我的最愛
+        headerView.ratingImageView.image = UIImage(named: restaurant.rating) //評價
+        
         
         // Configure the navigation bar appearance
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -125,6 +127,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
             if let rating = segue.identifier {
                 self.restaurant.rating = rating
                 self.headerView.ratingImageView.image = UIImage(named: rating)
+                
+                //更新餐廳資料
+                let dao = RestaurantDAO.shared
+                dao.update(data: self.restaurant)
                 
                 let scaleTransform = CGAffineTransform.init(scaleX: 0.1, y: 0.1)
                 self.headerView.ratingImageView.transform = scaleTransform
