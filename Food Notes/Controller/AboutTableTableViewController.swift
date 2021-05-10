@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class AboutTableTableViewController: UITableViewController {
 
@@ -67,17 +68,21 @@ class AboutTableTableViewController: UITableViewController {
         case 0:
             if indexPath.row == 0 {
                 if let url = URL(string: link) {
+                    //使用safari瀏覽器顯示內容
                     UIApplication.shared.open(url)
                 }
             } else if indexPath.row == 1 {
+                //使用webKit顯示內容
                 performSegue(withIdentifier: "showWebView", sender: self)
             }
+            
         // Follow us section
-//        case 1:
-//            if let url = URL(string: link) {
-//                let safariController = SFSafariViewController(url: url)
-//                present(safariController, animated: true, completion: nil)
-//            }
+        case 1:
+            if let url = URL(string: link) {
+                //在App裡，使用safariController顯示內容
+                let safariController = SFSafariViewController(url: url)
+                present(safariController, animated: true, completion: nil)
+            }
             
         default:
             break
