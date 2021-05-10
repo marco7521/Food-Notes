@@ -48,6 +48,7 @@
 		846FC056264131FE006342C7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FC055264131FD006342C7 /* MapViewController.swift */; };
 		8473C39A2648E95900660B57 /* AboutTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473C3992648E95900660B57 /* AboutTableTableViewController.swift */; };
 		8473C39C2648F05700660B57 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8473C39B2648F05700660B57 /* WebViewController.swift */; };
+		8473C39F2648FDC300660B57 /* myFavoriteRestaurant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8473C39D2648FDC300660B57 /* myFavoriteRestaurant.storyboard */; };
 		8486CE1C2642574F0025D1DC /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486CE1B2642574F0025D1DC /* ReviewViewController.swift */; };
 		8486CE1E26427F360025D1DC /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486CE1D26427F360025D1DC /* RoundedTextField.swift */; };
 		8486CE20264281EA0025D1DC /* NewRestaurantControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486CE1F264281EA0025D1DC /* NewRestaurantControllerTableViewController.swift */; };
@@ -105,6 +106,7 @@
 		846FC055264131FD006342C7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8473C3992648E95900660B57 /* AboutTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableTableViewController.swift; sourceTree = "<group>"; };
 		8473C39B2648F05700660B57 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		8473C39E2648FDC300660B57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Food Notes/Storyboard/Base.lproj/myFavoriteRestaurant.storyboard"; sourceTree = "<group>"; };
 		8486CE1B2642574F0025D1DC /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		8486CE1D26427F360025D1DC /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		8486CE1F264281EA0025D1DC /* NewRestaurantControllerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRestaurantControllerTableViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				846B7C082645381E00CA97A4 /* Discover.storyboard */,
 				846B7C05264537EA00CA97A4 /* About.storyboard */,
 				846B7BFD264511A000CA97A4 /* Onboarding.storyboard */,
+				8473C39D2648FDC300660B57 /* myFavoriteRestaurant.storyboard */,
 				846FBFD8263FDBDF006342C7 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				846FC03F26410312006342C7 /* Rubik-BlackItalic.ttf in Resources */,
+				8473C39F2648FDC300660B57 /* myFavoriteRestaurant.storyboard in Resources */,
 				846FC04626410312006342C7 /* Rubik-Bold.ttf in Resources */,
 				846FC04526410312006342C7 /* OFL.txt in Resources */,
 				846FC04126410312006342C7 /* Rubik-Regular.ttf in Resources */,
@@ -395,6 +399,14 @@
 				846FBFD9263FDBDF006342C7 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8473C39D2648FDC300660B57 /* myFavoriteRestaurant.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8473C39E2648FDC300660B57 /* Base */,
+			);
+			name = myFavoriteRestaurant.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
