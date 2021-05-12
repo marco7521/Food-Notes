@@ -105,6 +105,22 @@ class RestaurantDetailViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.row {
+        
+        case 0:
+            //撥打電話功能
+            if let url = URL(string: "tel://\(restaurant.tel)"){
+                UIApplication.shared.open(url)
+            }
+        
+        default:
+            break
+        }
+        
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
