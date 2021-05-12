@@ -51,7 +51,7 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        restaurants = RestaurantDAO.shared.getAllRestaurants()
+        loadData()
         tableView.reloadData()
         navigationController?.hidesBarsOnSwipe = true
     }
