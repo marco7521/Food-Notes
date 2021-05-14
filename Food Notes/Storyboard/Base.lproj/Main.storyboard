@@ -737,12 +737,13 @@
                         <outlet property="phoneTextField" destination="BK7-9f-bSv" id="7LZ-wm-YfY"/>
                         <outlet property="photoImageView" destination="T2o-me-jBR" id="PSl-Ax-mEg"/>
                         <outlet property="typeTextField" destination="55O-yN-UDt" id="ytQ-xL-aP9"/>
+                        <segue destination="JTD-iy-NtW" kind="unwind" identifier="reloadPage" unwindAction="reloadPage:" id="fme-CE-sYA"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UDU-5K-hBT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="JTD-iy-NtW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1276" y="-1032"/>
+            <point key="canvasLocation" x="1276" y="-982"/>
         </scene>
         <!--我的名單-->
         <scene sceneID="oTC-oa-rPx">
@@ -779,7 +780,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sE3-yd-G6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="376" y="-1032"/>
+            <point key="canvasLocation" x="376" y="-982"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="TS0-lt-qWx">
@@ -793,9 +794,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="ILf-qL-1VK" kind="relationship" relationship="viewControllers" id="usq-VV-liA"/>
-                        <segue destination="M5o-Fh-b2K" kind="relationship" relationship="viewControllers" id="1Eo-nW-sgW"/>
-                        <segue destination="5aV-62-MJf" kind="relationship" relationship="viewControllers" id="Y77-XR-t5E"/>
                         <segue destination="6Vm-og-nLq" kind="relationship" relationship="viewControllers" id="uPV-iK-NyW"/>
+                        <segue destination="5aV-62-MJf" kind="relationship" relationship="viewControllers" id="Y77-XR-t5E"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6s-AF-4aZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -820,7 +820,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4qZ-qb-sx7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-282" y="568"/>
+            <point key="canvasLocation" x="-323" y="568"/>
         </scene>
         <!--我的最愛-->
         <scene sceneID="ni8-tY-eHY">
@@ -903,11 +903,7 @@
                             <outlet property="delegate" destination="g11-fw-GGm" id="tYy-MP-h9j"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="我的最愛" id="CfV-OF-Pz6">
-                        <barButtonItem key="rightBarButtonItem" image="plus" id="SvP-3d-RoM">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="我的最愛" id="CfV-OF-Pz6"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yaq-sJ-mGl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

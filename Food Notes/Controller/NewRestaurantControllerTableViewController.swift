@@ -157,6 +157,8 @@ class NewRestaurantControllerTableViewController: UITableViewController, UITextF
         let dao = RestaurantDAO.shared
         dao.insert(data: restaurant)
         
+        //退回上一頁時，table view資料更新
+        performSegue(withIdentifier: "reloadPage", sender: self)
         dismiss(animated: true, completion: nil)
     }
     

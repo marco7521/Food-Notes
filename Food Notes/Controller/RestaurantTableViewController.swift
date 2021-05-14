@@ -31,6 +31,8 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
         if let customFont = UIFont(name: "Rubik-Medium", size: 40.0) {
             navigationController?.navigationBar.largeTitleTextAttributes = [ NSAttributedString.Key.foregroundColor: UIColor(red: 231/255, green: 76/255, blue: 60/255, alpha: 1.0), NSAttributedString.Key.font: customFont ]
         }
+        
+        //當此屬性設置為true時，向上滑動時，導航欄和工具欄會隱藏，向下滑動會再次顯示
         navigationController?.hidesBarsOnSwipe = true
         
         // 準備空視圖
@@ -244,6 +246,11 @@ class RestaurantTableViewController: UITableViewController, UISearchResultsUpdat
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func reloadPage(_ segue: UIStoryboardSegue){
+        //畫面資料更新
+        loadData()
+        tableView.reloadData()
+    }
     
     // MARK: - Helper methods
     
